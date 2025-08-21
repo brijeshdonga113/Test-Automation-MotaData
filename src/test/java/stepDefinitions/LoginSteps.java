@@ -74,7 +74,7 @@ public class LoginSteps extends BaseTest {
     @Then("I should be redirected to the dashboard")
     public void iShouldBeRedirectedToTheDashboard() {
         String currentUrl = driver.getCurrentUrl();
-        Assert.assertTrue(currentUrl.contains("login"));
+        Assert.assertTrue(currentUrl.contains("dashboard"));
 
     }
 

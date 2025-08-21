@@ -22,14 +22,21 @@ public class ScreenshotUtil {
             String screenshotDir = "target/screenshots/";
             Files.createDirectories(Paths.get(screenshotDir));
 
-            String filePath = screenshotDir + scenarioName.replace(" ", "_") + "_" + timestamp + ".png";
+            String fileName = scenarioName.replace(" ", "_") + "_" + timestamp + ".png";
+            String filePath = screenshotDir + fileName;
             File destination = new File(filePath);
             Files.copy(source.toPath(), destination.toPath());
 
-            return filePath;
+            // return relative path for Extent
+            return "./screenshots/" + fileName;
         } catch (IOException e) {
             System.out.println("⚠️ Failed to save screenshot: " + e.getMessage());
             return null;
         }
+    }
+
+    public static String captureScreenshotBase64(WebDriver driver) {
+        TakesScreenshot ts = (TakesScreenshot) driver;
+        return ts.getScreenshotAs(OutputType.BASE64);
     }
 }
