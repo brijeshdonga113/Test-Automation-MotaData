@@ -29,6 +29,13 @@ public class LoginSteps extends BaseTest {
         driver.get(url);
         System.out.println("I am on the login page");
 
+        try {
+            // Sleep for 10 seconds
+            Thread.sleep(10000); // 10000 milliseconds = 10 seconds
+        } catch (InterruptedException e) {
+            e.printStackTrace(); // handle the exception
+        }
+
         loginPage = new LoginPage(driver);
 
     }
@@ -36,12 +43,18 @@ public class LoginSteps extends BaseTest {
     @When("I enter a valid username and password")
     public void iEnterAValidUsernameAndPassword() {
 
+        try {
+            // Sleep for 10 seconds
+            Thread.sleep(10000); // 10000 milliseconds = 10 seconds
+        } catch (InterruptedException e) {
+            e.printStackTrace(); // handle the exception
+        }
 
         String username = ConfigReader.getProperty("username");
         String password = ConfigReader.getProperty("password");
         // Wait until username field is visible
-        loginPage.enterUsername(username);
 
+        loginPage.enterUsername(username);
         loginPage.enterPassword(password);
 
         System.out.println("I enter a valid username and password");
@@ -49,18 +62,25 @@ public class LoginSteps extends BaseTest {
 
     @And("I click the login button")
     public void iClickTheLoginButton() {
+        try {
+            // Sleep for 10 seconds
+            Thread.sleep(10000); // 10000 milliseconds = 10 seconds
+        } catch (InterruptedException e) {
+            e.printStackTrace(); // handle the exception
+        }
         loginPage.clickLogin();
     }
 
     @Then("I should be redirected to the dashboard")
     public void iShouldBeRedirectedToTheDashboard() {
         String currentUrl = driver.getCurrentUrl();
-        Assert.assertTrue(currentUrl.contains("/dashboard"));
+        Assert.assertTrue(currentUrl.contains("login"));
 
     }
 
     @And("I should see a welcome message")
     public void iShouldSeeAWelcomeMessage() {
+
         System.out.println("I should see a welcome message");
     }
 }

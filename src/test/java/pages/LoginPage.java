@@ -22,18 +22,26 @@ public class LoginPage {
     private By loginButton = By.xpath("//button[@id='login-btn']");
 
     public void enterUsername(String username) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         WebElement field = wait.until(ExpectedConditions.elementToBeClickable(usernameField));
-        field.clear();
         field.sendKeys(username);
     }
 
     public void enterPassword(String password) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         WebElement field = wait.until(ExpectedConditions.elementToBeClickable(passwordField));
-        field.clear();
+
         field.sendKeys(password);
     }
 
     public void clickLogin() {
         wait.until(ExpectedConditions.elementToBeClickable(loginButton)).click();
+        try {
+            // Sleep for 10 seconds
+            Thread.sleep(10000); // 10000 milliseconds = 10 seconds
+        } catch (InterruptedException e) {
+            e.printStackTrace(); // handle the exception
+        }
     }
-    }
+
+}
