@@ -28,7 +28,6 @@ public class LoginPage {
     }
 
     public void enterPassword(String password) {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         WebElement field = wait.until(ExpectedConditions.elementToBeClickable(passwordField));
         field.clear();
         field.sendKeys(password);
@@ -37,4 +36,4 @@ public class LoginPage {
     public void clickLogin() {
         wait.until(ExpectedConditions.elementToBeClickable(loginButton)).click();
     }
-}
+    }

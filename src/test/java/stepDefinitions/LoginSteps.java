@@ -36,6 +36,7 @@ public class LoginSteps extends BaseTest {
     @When("I enter a valid username and password")
     public void iEnterAValidUsernameAndPassword() {
 
+
         String username = ConfigReader.getProperty("username");
         String password = ConfigReader.getProperty("password");
         // Wait until username field is visible
