@@ -9,14 +9,14 @@ public class Hooks extends BaseTest {
 
     private WebDriver driver;
 
-    //@Before
+    @Before
     public void setUp() {
         System.out.println(">>> Starting browser before scenario...");
         initDriver();
         driver = getDriver();
     }
 
-    //@After
+    @After
     public void tearDown() {
         System.out.println(">>> Closing browser after scenario...");
         quitDriver();

@@ -13,6 +13,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import pages.LoginPage;
+import utils.ConfigReader;
 
 import java.time.Duration;
 
@@ -23,7 +24,9 @@ public class LoginSteps extends BaseTest {
 
     @Given("I am on the login page")
     public void iAmOnTheLoginPage() {
-        driver.get("http://172.16.11.181/login");
+        String url = ConfigReader.getProperty("url");
+
+        driver.get(url);
         System.out.println("I am on the login page");
 
         loginPage = new LoginPage(driver);
@@ -32,13 +35,13 @@ public class LoginSteps extends BaseTest {
 
     @When("I enter a valid username and password")
     public void iEnterAValidUsernameAndPassword() {
+
+        String username = ConfigReader.getProperty("username");
+        String password = ConfigReader.getProperty("password");
         // Wait until username field is visible
-        loginPage.enterUsername("brijesh.donga@motadata.com");
+        loginPage.enterUsername(username);
 
-        loginPage.enterPassword("admin@123");
-
-
-
+        loginPage.enterPassword(password);
 
         System.out.println("I enter a valid username and password");
     }
